@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{{ listing['title'] }} — WebBoard{% endblock %}
+{% block content %}
+<a class="back-link" href="{{ url_for('index') }}">
+    ← Вернуться к объявлениям
+</a>
+<article class="detail-card">
+    <h1>{{ listing['title'] }}</h1>
+    <div class="listing-meta">
+        <span>Автор: {{ listing['username'] }}</span>
+        <span>{{ listing['created_at'] }}</span>
+    </div>
+    <div class="description">
+        {{ listing['description'] }}
+    </div>
+</article>
+<section class="comments-section">
+    <h2>Комментарии ({{ comments|length }})</h2>
+    {% if comments %}
+        {% for comment in comments %}
+            <article class="comment">
+                <div class="comment-header">
+                    <strong>{{ comment['username'] }}</strong>
+                    <small>{{ comment['created_at'] }}</small>
+                </div>
+                <div class="comment-content">{{ comment['content'] }}</div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>Пока нет комментариев.</p>
+    {% endif %}
+    <div class="comment-form">
+        <h3>Оставить комментарий</h3>
+        <form method="POST">
+            <textarea
+                name="content"
+                rows="4"
+                maxlength="2000"
+                placeholder="Введите комментарий..."
+                required
+            ></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

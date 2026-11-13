@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Главная — WebBoard{% endblock %}
+{% block content %}
+<section class="page-heading">
+    <h1>Доска объявлений</h1>
+    <p>
+        Находите интересные предложения
+        и публикуйте свои.
+    </p>
+</section>
+<section class="search-section">
+    <form
+        method="GET"
+        action="{{ url_for('index') }}"
+        class="search-form"
+    >
+        <input
+            type="text"
+            name="search"
+            placeholder="Поиск по названию..."
+            value="{{ search }}"
+        >
+        <button type="submit">
+            Найти
+        </button>
+    </form>
+</section>
+<div class="section-heading">
+    <h2>Объявления</h2>
+    <a
+        class="button"
+        href="{{ url_for('create_listing') }}"
+    >
+        + Создать
+    </a>
+
+</div>
+{% if listings %}
+    <div class="listing-grid">
+        {% for listing in listings %}
+            <article class="listing-card">
+                <h3>
+                    <a href="{{ url_for(
+                        'listing_detail',
+                        listing_id=listing['id']
+                    ) }}">
+                        {{ listing['title'] }}
+                    </a>
+                </h3>
+                <p>
+                    {{ listing['description'] }}
+                </p>
+                <div class="listing-meta">
+                    <span>
+                        Автор: {{ listing['username'] }}
+                    </span>
+                    <span>
+                        {{ listing['created_at'] }}
+                    </span>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="empty-state">
+        <h3>Объявления не найдены</h3>
+        <p>
+            Попробуйте изменить поисковый запрос.
+        </p>
+    </div>
+{% endif %}
+{% endblock %}

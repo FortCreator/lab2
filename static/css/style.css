@@ -1,0 +1,310 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f6f8;
+    color: #252a34;
+    line-height: 1.6;
+}
+
+.container {
+    width: min(1000px, 92%);
+    margin: 0 auto;
+}
+
+.header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.header-content {
+    min-height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a,
+.back-link {
+    color: #475569;
+    text-decoration: none;
+}
+
+nav a:hover,
+.back-link:hover {
+    color: #2563eb;
+}
+
+main.container {
+    min-height: calc(100vh - 140px);
+    padding-top: 35px;
+    padding-bottom: 50px;
+}
+
+.page-heading {
+    margin-bottom: 25px;
+}
+
+.page-heading h1,
+.form-container h1 {
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+
+.page-heading p,
+.form-container > p {
+    color: #64748b;
+}
+
+.search-section {
+    margin-bottom: 35px;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font: inherit;
+    background: white;
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid #bfdbfe;
+    border-color: #2563eb;
+}
+
+button,
+.button {
+    display: inline-block;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 7px;
+    background: #2563eb;
+    color: white;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+    background: #1d4ed8;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    margin: 0;
+}
+
+.listing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.listing-card,
+.detail-card,
+.comment,
+.form-container {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.listing-card h3 {
+    margin-top: 0;
+}
+
+.listing-card h3 a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.listing-card h3 a:hover {
+    text-decoration: underline;
+}
+
+.listing-card p,
+.description {
+    color: #475569;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.listing-meta {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.empty-state {
+    padding: 35px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    color: #64748b;
+}
+
+.detail-card {
+    margin-top: 20px;
+}
+
+.detail-card h1 {
+    overflow-wrap: anywhere;
+}
+
+.description {
+    margin-top: 25px;
+    line-height: 1.8;
+}
+
+.comments-section {
+    margin-top: 35px;
+}
+
+.comment {
+    margin-bottom: 12px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.comment-header small {
+    color: #94a3b8;
+}
+
+.comment-content {
+    overflow-wrap: anywhere;
+}
+
+.comment-form {
+    margin-top: 30px;
+}
+
+.comment-form textarea {
+    margin-bottom: 12px;
+    resize: vertical;
+}
+
+.form-container {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.listing-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.listing-form label {
+    font-weight: bold;
+}
+
+.listing-form textarea {
+    resize: vertical;
+}
+
+.cancel-link {
+    color: #64748b;
+    text-decoration: none;
+    text-align: center;
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 7px;
+}
+
+.message.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.message.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.footer {
+    padding: 20px 0;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    color: #94a3b8;
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    .header-content {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .listing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .section-heading {
+        gap: 10px;
+    }
+}

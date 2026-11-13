@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Новое объявление — WebBoard{% endblock %}
+{% block content %}
+<section class="form-container">
+    <h1>Создать объявление</h1>
+    <p>Заполните информацию о вашем предложении.</p>
+    <form method="POST" class="listing-form">
+        <label for="title">Название объявления</label>
+        <input
+            type="text"
+            id="title"
+            name="title"
+            maxlength="150"
+            placeholder="Например, Продам ноутбук"
+            required
+        >
+        <label for="description">Описание</label>
+        <textarea
+            id="description"
+            name="description"
+            rows="7"
+            maxlength="5000"
+            placeholder="Подробно опишите объявление..."
+            required
+        ></textarea>
+        <button type="submit">Опубликовать</button>
+        <a class="cancel-link" href="{{ url_for('index') }}">
+            Отмена
+        </a>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+--- a/app.py
++++ b/app.py
+@@ -30,18 +30,21 @@
+         search = request.args.get("search", "").strip()
+ 
+         if search:
+ 
+             sql = (
+                 "SELECT listings.*, users.username "
+                 "FROM listings "
+                 "JOIN users ON listings.user_id = users.id "
+-                f"WHERE listings.title LIKE '%{search}%' "
++                "WHERE listings.title LIKE ? "
+                 "ORDER BY listings.created_at DESC"
+             )
+ 
+-            listings = db.execute(sql).fetchall()
++            listings = db.execute(
++                sql,
++                (f"%{search}%",)
++            ).fetchall()
+ 
+         else:
+             listings = db.execute(
+--- a/templates/listing.html
++++ b/templates/listing.html
+@@ -39,7 +39,7 @@
+                     <small>{{ comment['created_at'] }}</small>
+                 </div>
+ 
+-                <div class="comment-content">{{ comment['content']|safe }}</div>
++                <div class="comment-content">{{ comment['content'] }}</div>
+ 
+             </article>
+ 
